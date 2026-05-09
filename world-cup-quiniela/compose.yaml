@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:16
+    container_name: quiniela-postgres
+    environment:
+      POSTGRES_DB: quiniela
+      POSTGRES_USER: quiniela
+      POSTGRES_PASSWORD: quiniela
+    ports:
+      # left side: host port, right side: container port
+      - "5432:5432"
+    volumes:
+      # /var/lib/postgresql/data -> is the path were the volume will be mounted
+      # IN THE CONTAINER
+      - quiniela_pgdata:/var/lib/postgresql/data
+
+volumes:
+  quiniela_pgdata:
