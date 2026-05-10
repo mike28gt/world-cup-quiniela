@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { loginUser } from "@/features/auth/authApi";
+import { saveAccessToken } from "@/features/auth/tokenStorage";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -28,6 +29,7 @@ export default function LoginPage() {
       });
 
       localStorage.setItem("accessToken", response.accessToken);
+      saveAccessToken(response.accessToken);
 
       router.push("/dashboard");
     } catch (error) {

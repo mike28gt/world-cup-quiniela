@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { registerUser } from "@/features/auth/authApi";
+import { saveAccessToken } from "@/features/auth/tokenStorage";
 
 export default function RegisterPage() {
 
@@ -31,7 +32,7 @@ export default function RegisterPage() {
                 confirmPassword,
             });
 
-            localStorage.setItem("accessToken", response.accessToken);
+            saveAccessToken(response.accessToken);
 
             router.push("/dashboard");
 
